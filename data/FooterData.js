@@ -30,7 +30,7 @@ export const appDownload = [
 ];
 
 export const getHelp = [
-  { href: "/about", linkText: " About" },
+  { href: "/about-us", linkText: " About" },
   { href: "/contact-us", linkText: " Contact Us" },
   { href: "/career", linkText: " Careers" },
   { href: "/blog", linkText: " Blog" },

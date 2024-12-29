@@ -4,8 +4,10 @@ import { Button } from "./ui/button";
 import Link from "next/link";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import { privateNavlinks, publicNavlinks } from "@/data/NavBarData";
+import { checkUser } from "@/lib/checkUser";
 
-const HeaderBar = () => {
+const HeaderBar = async () => {
+  await checkUser();
   return (
     <div className="fixed top-0 border-b z-50 bg-white/80 backdrop-blur-md w-full flex">
       <nav className="container mx-auto px-4 py-4 flex items-center justify-between">

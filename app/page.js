@@ -12,10 +12,11 @@ import { useContext } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import HeroSection from "@/components/Hero";
+import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       {/* Hero Section */}
       <HeroSection />
       {/* /* App Stats Section */}
@@ -75,6 +76,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       {/* App Testimonials */}
       <section id="testimonials" className="py-20">
         <div className="container mx-auto px-4">

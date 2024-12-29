@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={`${inter.className}`}>
+        <body className={`${inter.className} bg-[#f5f5f8]`}>
           {/* header/ Navbar */}
           <header className="header">
             <HeaderBar />

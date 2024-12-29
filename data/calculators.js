@@ -1,0 +1,130 @@
+import { HandCoins, Calculator, X, User, IndianRupee } from "lucide-react";
+
+export const allCalculator = [
+  {
+    id: 1,
+    name: "Fixed Deposite Calculator",
+    to: "/calculators/fix-deposite",
+    symbol: <Calculator size={30} />,
+  },
+  {
+    id: 2,
+    name: "knowledge Guide",
+    to: "/calculators/fd-calculator",
+    symbol: <Calculator size={30} />,
+  },
+  {
+    id: 3,
+    name: "Retirement Calculator",
+    to: "/calculators",
+    symbol: <Calculator size={30} />,
+  },
+  {
+    id: 4,
+    name: "Salary Calculator",
+    to: "/calculators",
+    symbol: <IndianRupee size={30} />,
+  },
+  {
+    id: 5,
+    name: "HRA Calculator",
+    to: "/calculators",
+    symbol: <IndianRupee size={30} />,
+  },
+  {
+    id: 6,
+    name: "NPS Calculator",
+    to: "/calculators",
+    symbol: <IndianRupee size={30} />,
+  },
+  {
+    id: 7,
+    name: "Inflation Calculator",
+    to: "/calculators",
+    symbol: <IndianRupee size={30} />,
+  },
+  {
+    id: 8,
+    name: "SIP Calculator",
+    to: "/calculators",
+    symbol: <Calculator size={30} />,
+  },
+  {
+    id: 9,
+    name: "Lumpsum Calculator",
+    to: "/calculators",
+    symbol: <Calculator size={30} />,
+  },
+  {
+    id: 10,
+    name: "SWP Calculator",
+    to: "/calculators",
+    symbol: <IndianRupee size={30} />,
+  },
+  {
+    id: 11,
+    name: "Mutual Fund Calculator",
+    to: "/calculators",
+    symbol: <Calculator size={30} />,
+  },
+  {
+    id: 12,
+    name: "PPF Calculator",
+    to: "/calculators",
+    symbol: <IndianRupee size={30} />,
+  },
+  {
+    id: 13,
+    name: "EMI Calculator",
+    to: "/calculators",
+    symbol: <Calculator size={30} />,
+  },
+  {
+    id: 14,
+    name: "Credit Card EMI Calculator",
+    to: "/calculators",
+    symbol: <IndianRupee size={30} />,
+  },
+  {
+    id: 15,
+    name: "Vehicle Loan Calculator",
+    to: "/calculators",
+    symbol: <Calculator size={30} />,
+  },
+  {
+    id: 16,
+    name: "Loan Part Payment Calculator",
+    to: "/calculators",
+    symbol: <IndianRupee size={30} />,
+  },
+  {
+    id: 17,
+    name: "Hoam Loan Calculator",
+    to: "/calculators",
+    symbol: <Calculator size={30} />,
+  },
+  {
+    id: 18,
+    name: "Simple Interest Calculator",
+    to: "/calculators",
+    symbol: <IndianRupee size={30} />,
+  },
+  {
+    id: 19,
+    name: "Compound Interest Calculator",
+    to: "/calculators",
+    symbol: <Calculator size={30} />,
+  },
+  {
+    id: 20,
+    name: "Term Insurance Calculator",
+    to: "/calculators",
+    symbol: <IndianRupee size={30} />,
+  },
+  {
+    id: 20,
+    name: "Step Up SIP Calculator",
+    to: "/calculators",
+    symbol: <IndianRupee size={30} />,
+  },
+];
