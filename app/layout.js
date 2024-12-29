@@ -10,6 +10,7 @@ import {
   SignedOut,
   UserButton,
 } from "@clerk/nextjs";
+import MobileNav from "@/components/MobileNav";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,8 +35,13 @@ export default function RootLayout({ children }) {
           </main>
           <Toaster richColors />
 
+          {/* Mobile nav at bottom */}
+          <MobileNav />
           {/* footer */}
-          <footer className="footer bg-black text-white" id="footer">
+          <footer
+            className="footer bg-black text-white pb-4 md:mb-0"
+            id="footer"
+          >
             <Footer />
           </footer>
         </body>

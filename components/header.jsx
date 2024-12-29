@@ -5,8 +5,18 @@ import Link from "next/link";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import { privateNavlinks, publicNavlinks } from "@/data/NavBarData";
 import { checkUser } from "@/lib/checkUser";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { IndianRupee, Menu } from "lucide-react";
 
 const HeaderBar = async () => {
+  const websiteName = process.env.NEXT_PUBLIC_WEBSITENAME;
   await checkUser();
   return (
     <div className="fixed top-0 border-b z-50 bg-white/80 backdrop-blur-md w-full flex">
@@ -14,8 +24,8 @@ const HeaderBar = async () => {
         <div className="logo">
           <WebsiteName />
         </div>
-        <div className="mobile-menu flex md:hidden"></div>
 
+        {/* Desktop Menu */}
         <div className="desktop-menu hidden md:flex items-center space-x-4">
           <div className="menu-item">
             <div className="signIn-menu flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4">
