@@ -13,3 +13,9 @@ npm i
 ```npm
 npx prisma migrate dev --name init
 ```
+
+## react hook form and zod resolver
+
+```npm
+npm install react-hook-form @hookform/resolvers zod
+```

@@ -57,6 +57,7 @@ const Footer = () => {
               <li className="mb-4" key={i}>
                 <Link
                   href={link.href}
+                  key={i}
                   className={({ isActive }) =>
                     isActive
                       ? "hover:underline bg-blue-400 p-2 px-3 rounded-sm"
