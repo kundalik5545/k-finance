@@ -1,6 +1,6 @@
 # Setup Guide for finance tracking app.
 
-## added/Fork Branch
+## Fork Branch
 
 ```
 https://github.com/kundalik5545/k-finance.git
