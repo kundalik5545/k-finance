@@ -15,7 +15,7 @@ npm install
 ## Update the .env file with your credentials
 
 ```js
-DATABASE_URL="sqlserver://localhost:1433;database=KFinance;user=TestJk;password=0807;trustServerCertificate=true"
+DATABASE_URL="sqlserver://localhost:1433;database=KFinance;user=uruserid;password=urpassword;trustServerCertificate=true"
 DATABASE_URLS="postgresql://postgres.xeckznkzjadiaddvjmmu:[YOUR-PASSWORD]@aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres?pgbouncer=true"
 DIRECT_URL="postgresql://postgres.xeckznkzjadiaddvjmmu:[YOUR-PASSWORD]@aws-0-ap-southeast-1.pooler.supabase.com:5432/postgres"
 
