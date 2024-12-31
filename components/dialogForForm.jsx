@@ -22,9 +22,11 @@ const DialogForForm = ({
         <DialogTrigger asChild>{dialogFormTrigger}</DialogTrigger>
         <DialogContent className={sheetCss}>
           <DialogHeader>
-            <DialogTitle>{dialogFormTitle}</DialogTitle>
+            <DialogTitle className="gradient-subTitle pb-3 text-2xl">
+              {dialogFormTitle}
+            </DialogTitle>
             <DialogDescription>
-              <div className={`${dialogFormTitle} p-2`}>{children}</div>
+              <div className={`${dialogFormTitle}`}>{children}</div>
             </DialogDescription>
           </DialogHeader>
         </DialogContent>

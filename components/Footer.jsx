@@ -80,9 +80,10 @@ const Footer = () => {
             </h2>
             <ul>
               {termsCondition.map((link, i) => (
-                <li className="mb-4">
+                <li className="mb-4" key={i}>
                   <Link
                     href={link.href}
+                    key={i}
                     end
                     className={({ isActive }) =>
                       isActive
@@ -104,9 +105,10 @@ const Footer = () => {
             </h2>
             <ul>
               {getHelp.map((link, i) => (
-                <li className="mb-4 text-base">
+                <li className="mb-4 text-base" key={i}>
                   <Link
                     href={link.href}
+                    key={i}
                     className={({ isActive }) =>
                       isActive
                         ? "hover:underline bg-blue-400 p-2 px-3 rounded-sm"
@@ -129,9 +131,10 @@ const Footer = () => {
           </h2>
           <ul>
             {followUs.map((link, i) => (
-              <li className="mb-4">
+              <li className="mb-4" key={i}>
                 <Link
                   href={link.href}
+                  key={i}
                   className={({ isActive }) =>
                     isActive
                       ? "hover:underline bg-blue-400 p-2 px-3 rounded-sm"
@@ -153,10 +156,11 @@ const Footer = () => {
           </h2>
           <ul className="font-medium">
             {appDownload.map((link, i) => (
-              <li className="mb-4">
+              <li className="mb-4" key={i}>
                 <Link
                   href={link.href}
                   end
+                  key={i}
                   className={({ isActive }) =>
                     isActive
                       ? "hover:underline bg-blue-400 p-2 px-3 rounded-sm"
@@ -180,7 +184,7 @@ const Footer = () => {
               2024
             </span>
           </span>
-          <a href="/">{websiteName}.</a>
+          <Link href="/">{websiteName}.</Link>
         </span>
         <ShareUs />
       </div>

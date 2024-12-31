@@ -22,7 +22,9 @@ const SheetForForm = ({
         <SheetTrigger asChild>{sheetFormTrigger}</SheetTrigger>
         <SheetContent className={sheetCss}>
           <SheetHeader>
-            <SheetTitle>{sheetFormTitle}</SheetTitle>
+            <SheetTitle className="gradient-subTitle pb-3 text-2xl">
+              {sheetFormTitle}
+            </SheetTitle>
             <SheetDescription>
               <div className={`${sheetFormTitle} p-2`}>{children}</div>
             </SheetDescription>

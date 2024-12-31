@@ -5,5 +5,9 @@ export const contactListSchema = z.object({
   contactPhone: z
     .string()
     .regex(/^\d{10}$/, "Please enter a valid 10-digit phone number"),
-  contactEmail: z.string().email("Please enter a valid email address"),
+  contactEmail: z
+    .string()
+    .email("Please enter a valid email address")
+    .optional()
+    .transform((val) => (val === undefined ? undefined : val.trim())),
 });
