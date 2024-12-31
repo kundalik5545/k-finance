@@ -19,3 +19,9 @@ npx prisma migrate dev --name init
 ```npm
 npm install react-hook-form @hookform/resolvers zod
 ```
+
+## added git devBranch
+
+```
+https://github.com/kundalik5545/k-finance.git
+```
