@@ -14,7 +14,7 @@ const DrawerForForm = ({
   children,
   drawerTitle,
   drawerFormTrigger,
-  drawerCss = "w-96 sm:w-[500px] md:w-[700px] lg:w-[1000px] mx-auto container",
+  drawerCss = "container mx-auto w-[350px] sm:w-[500px] md:w-[700px] lg:w-[900px]",
 }) => {
   const [open, setOpen] = useState(false);
   return (
@@ -22,9 +22,11 @@ const DrawerForForm = ({
       <DrawerTrigger asChild>{drawerFormTrigger}</DrawerTrigger>
       <DrawerContent className={drawerCss}>
         <DrawerHeader>
-          <DrawerTitle>{drawerTitle}</DrawerTitle>
+          <DrawerTitle className="gradient-subTitle pb-3 text-2xl">
+            {drawerTitle}
+          </DrawerTitle>
         </DrawerHeader>
-        <div className={`${drawerTitle} p-2`}>{children}</div>
+        <div className={`${drawerTitle}`}>{children}</div>
       </DrawerContent>
     </Drawer>
   );

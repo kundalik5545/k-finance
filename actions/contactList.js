@@ -5,8 +5,7 @@ import { auth } from "@clerk/nextjs/server";
 
 export const createNewContact = async (data) => {
   // Steps to follow
-  //1. Check user is correct
-  //2. Check user is logged in
+  //1. Check user is exist and logged in
   //3. check all fields are provoided
   //4. Check previous number exist
   //5. create new contact
@@ -23,8 +22,13 @@ export const createNewContact = async (data) => {
 
     if (!user) throw new Error("User not found");
 
-    if (!data || !data.contactName) {
-      throw new Error("Invalid data payload");
+    // Checking all fields are provoided
+    if (!data.contactName && !data.contactPhone && !data.contactEmail) {
+      return {
+        success: false,
+        message: "Please provoide all fileds.",
+        status: 400,
+      };
     }
 
     const createdContact = await prisma.contactList.create({

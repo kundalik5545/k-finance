@@ -5,9 +5,9 @@ import { BarLoader } from "react-spinners";
 const ContactListLayout = ({ children }) => {
   return (
     <div className="p-5 md:p-0 overflow-hidden">
-      <h1 className="text-4xl font-bold gradient-title mb-5">
+      <h2 className="text-4xl font-bold gradient-title mb-5">
         Emergency Contact List
-      </h1>
+      </h2>
 
       {/* Dashboard Page */}
       <Suspense

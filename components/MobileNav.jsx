@@ -13,7 +13,7 @@ const MobileNav = () => {
             <Link
               key={i}
               href={link.href}
-              className="text-gray-700 transition-colors font-medium"
+              className=" rounded text-gray-700 transition-colors font-medium"
             >
               {link.linkText}
             </Link>
@@ -25,7 +25,7 @@ const MobileNav = () => {
             <Button variant="outline">Login</Button>
           </SignInButton>
         </SignedOut>
-        <SignedIn className="bg-transparent">
+        <SignedIn className="">
           <UserButton appearance={{ elements: { avatarBox: "w-10 h-10" } }} />
         </SignedIn>
       </div>
