@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import React from "react";
 
 const TestPage = () => {
-  const drawerTitle = "Add Emergency Contacts";
+  const drawerFormTitle = "Add Emergency Contacts";
   const drawerFormTrigger = <Button>Add Contact</Button>;
 
   const sheetFormTitle = "Add Emergency Contacts";
@@ -20,7 +20,7 @@ const TestPage = () => {
   return (
     <div className="flex flex-wrap gap-3">
       <DrawerForForm
-        drawerTitle={drawerTitle}
+        drawerFormTitle={drawerFormTitle}
         drawerFormTrigger={drawerFormTrigger}
       >
         <div className="mx-auto px-4 pb-4">
@@ -158,6 +158,8 @@ const TestPage = () => {
           </form>
         </div>
       </DialogForForm>
+
+      {/* testing backend response */}
     </div>
   );
 };

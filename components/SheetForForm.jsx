@@ -13,12 +13,13 @@ const SheetForForm = ({
   children,
   sheetFormTitle,
   sheetFormTrigger,
-  sheetCss = "w-96 sm:w-[500px] md:w-[700px] lg:w-[1000px] mx-auto container",
+  formOpen,
+  setFormOpen,
+  sheetCss = "mx-auto container",
 }) => {
-  const [open, setOpen] = useState(false);
   return (
     <div>
-      <Sheet open={open} onOpenChange={setOpen}>
+      <Sheet open={formOpen} onOpenChange={setFormOpen}>
         <SheetTrigger asChild>{sheetFormTrigger}</SheetTrigger>
         <SheetContent className={sheetCss}>
           <SheetHeader>
