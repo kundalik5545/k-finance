@@ -12,21 +12,22 @@ import {
 } from "@/components/ui/drawer";
 const DrawerForForm = ({
   children,
-  drawerTitle,
+  drawerFormTitle,
   drawerFormTrigger,
+  formOpen,
+  setFormOpen,
   drawerCss = "container mx-auto w-[350px] sm:w-[500px] md:w-[700px] lg:w-[900px]",
 }) => {
-  const [open, setOpen] = useState(false);
   return (
-    <Drawer open={open} onOpenChange={setOpen}>
+    <Drawer open={formOpen} onOpenChange={setFormOpen}>
       <DrawerTrigger asChild>{drawerFormTrigger}</DrawerTrigger>
       <DrawerContent className={drawerCss}>
         <DrawerHeader>
           <DrawerTitle className="gradient-subTitle pb-3 text-2xl">
-            {drawerTitle}
+            {drawerFormTitle}
           </DrawerTitle>
         </DrawerHeader>
-        <div className={`${drawerTitle}`}>{children}</div>
+        <div className={`${drawerFormTitle} p-3`}>{children}</div>
       </DrawerContent>
     </Drawer>
   );

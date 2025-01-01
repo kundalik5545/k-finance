@@ -13,14 +13,15 @@ const DialogForForm = ({
   children,
   dialogFormTitle,
   dialogFormTrigger,
-  sheetCss = "mx-auto container",
+  formOpen,
+  setFormOpen,
+  dialogCss = "mx-auto container",
 }) => {
-  const [open, setOpen] = useState(false);
   return (
     <div>
-      <Dialog open={open} onOpenChange={setOpen}>
+      <Dialog open={formOpen} onOpenChange={setFormOpen}>
         <DialogTrigger asChild>{dialogFormTrigger}</DialogTrigger>
-        <DialogContent className={sheetCss}>
+        <DialogContent className={dialogCss}>
           <DialogHeader>
             <DialogTitle className="gradient-subTitle pb-3 text-2xl">
               {dialogFormTitle}
