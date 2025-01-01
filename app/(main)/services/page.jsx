@@ -23,7 +23,7 @@ const ServicePage = () => {
   const allServices = [
     { href: "/contact-list", linkText: "Contact List", iconName: <Contact /> },
     { href: "/testPage", linkText: "Test Page", iconName: <FlaskConical /> },
-    { href: "/insurance", linkText: "Insurance", iconName: <Shield /> },
+    { href: "/patience", linkText: "Insurance", iconName: <Shield /> },
     { href: "/basic-details", linkText: "Basic Details", iconName: <User /> },
     { href: "/patience", linkText: "Bank Details", iconName: <Landmark /> },
     {
