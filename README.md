@@ -76,3 +76,9 @@ npx prisma migrate dev --name init
 ```npm
 npm install react-hook-form @hookform/resolvers zod
 ```
+
+## Edit two files before commit
+
+update .env file for DATABASE_URLS change s and also uncomment pg server url db
+
+also change prisma migration

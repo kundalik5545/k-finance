@@ -51,6 +51,7 @@ const ContactList = () => {
   useEffect(() => {
     const fetchContacts = async () => {
       try {
+        setLoading(true);
         const response = await getContacts();
         setContacts(response.data);
       } catch (error) {
@@ -65,6 +66,7 @@ const ContactList = () => {
   // Handle form submission
   const onSubmit = async (data) => {
     try {
+      setLoading(true);
       const response = await createNewContact(data);
       if (response.success) {
         toast.success(response.message);
@@ -190,7 +192,7 @@ const InputSection = ({ register, errors, reset, loading }) => (
             Creating...
           </>
         ) : (
-          "Add Contact"
+          "Create Contact"
         )}
       </Button>
       <Button type="button" className="w-1/2" onClick={reset}>
