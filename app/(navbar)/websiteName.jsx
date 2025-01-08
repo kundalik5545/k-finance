@@ -6,10 +6,7 @@ const websiteName = process.env.NEXT_PUBLIC_WEBSITENAME;
 function WebsiteName() {
   return (
     <div>
-      <Link
-        href="/"
-        className="flex items-center space-x-1 rtl:space-x-reverse"
-      >
+      <Link href="/" className="flex">
         <IndianRupee size={40} />
         <span className="self-center font-inter text-3xl font-semibold whitespace-nowrap dark:text-white ">
           {websiteName}

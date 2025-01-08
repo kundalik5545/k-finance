@@ -10,4 +10,5 @@ export const contactListSchema = z.object({
     .email("Please enter a valid email address")
     .optional()
     .transform((val) => (val === undefined ? undefined : val.trim())),
+  contactTitle: z.string().min(1, "Title is required."),
 });

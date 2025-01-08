@@ -1,7 +1,7 @@
 import React from "react";
 
 const Mainlayout = ({ children }) => {
-  return <div className="container mx-auto my-24 max-w-7xl">{children}</div>;
+  return <div className="p-5 pt-20">{children}</div>;
 };
 
 export default Mainlayout;

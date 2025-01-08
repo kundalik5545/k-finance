@@ -3,14 +3,50 @@ import {
   GraduationCap,
   House,
   LayoutDashboard,
-  User,
+  CircleDollarSign,
+  TrendingUp,
+  ShieldCheck,
+  HandCoins,
+  FileChartColumnIncreasing,
+  Gem,
 } from "lucide-react";
 
-export const privateNavlinks = [
-  { href: "/dashboard", linkText: "Dashboard" },
-  { href: "/services", linkText: "Services" },
-  { href: "/calculators", linkText: "Calculators" },
-  { href: "/blog", linkText: "Blog" },
+export const dashboardNavlinks = [
+  {
+    url: "/dashboard",
+    linkText: "Dashboard",
+    icon: <LayoutDashboard />,
+  },
+  {
+    url: "#transactions",
+    linkText: "Transactions",
+    icon: <CircleDollarSign />,
+  },
+  {
+    url: "#investments",
+    linkText: "Investments",
+    icon: <TrendingUp />,
+  },
+  {
+    url: "#insurance",
+    linkText: "Insurance",
+    icon: <ShieldCheck />,
+  },
+  {
+    url: "#loans",
+    linkText: "Loans",
+    icon: <HandCoins />,
+  },
+  {
+    url: "#assets",
+    linkText: "Assets",
+    icon: <Gem />,
+  },
+  {
+    url: "#reports",
+    linkText: "Reports",
+    icon: <FileChartColumnIncreasing />,
+  },
 ];
 
 export const publicNavlinks = [

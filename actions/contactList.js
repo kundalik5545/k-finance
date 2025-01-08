@@ -38,14 +38,10 @@ export const createNewContact = async (data) => {
       data: { ...data, userId: user.id },
     });
 
-    // 5. Fetch and return all previous contacts
-    const allContacts = await prisma.contactList.findMany({
-      where: { userId: user.id },
-    });
     return {
       success: true,
       message: "Added to contact list",
-      data: allContacts,
+      data: createdContact,
     };
   } catch (error) {
     console.log("🚀 Error in backend server:- ", error);
@@ -77,5 +73,90 @@ export const getContacts = async () => {
   } catch (error) {
     console.log("🚀 Error in backend server:- ", error);
     return { success: false, message: "Please contact admin." };
+  }
+};
+
+export const updateContact = async (contactId, data) => {
+  try {
+    // Validate input
+    if (!contactId || !data || !data.contactPhone) {
+      throw new Error("Invalid input data");
+    }
+
+    // Check if user exists and is logged in
+    const { userId } = await auth();
+    if (!userId) {
+      throw new Error("Unauthorized User!");
+    }
+
+    // Fetch user from the database
+    const user = await prisma.user.findUnique({
+      where: { clerkUserId: userId },
+    });
+    if (!user) {
+      throw new Error("User not found");
+    }
+
+    // Update contact in the database
+    const updatedContact = await prisma.contactList.update({
+      where: {
+        id: contactId,
+      },
+      data: {
+        contactPhone: data.contactPhone,
+        contactEmail: data.contactEmail,
+        contactName: data.contactName,
+        contactTitle: data.contactTitle,
+      },
+    });
+
+    return {
+      success: true,
+      message: "Contact updated successfully",
+      data: updatedContact,
+    };
+  } catch (error) {
+    // Log the error for debugging
+    console.error("🚀 Error in backend server:", error.message || error);
+
+    return {
+      success: false,
+      message:
+        error.message || "Failed to update contact. Please contact admin.",
+    };
+  }
+};
+
+// New deleteContact function
+export const deleteContact = async (contactId) => {
+  console.log("Test contact id:- ", contactId);
+
+  try {
+    // Check if user exists and is logged in
+    const { userId } = await auth();
+    if (!userId) throw new Error("Unauthorized User!");
+
+    const user = await prisma.user.findUnique({
+      where: { clerkUserId: userId },
+    });
+
+    if (!user) throw new Error("User not found");
+
+    await prisma.contactList.delete({
+      where: {
+        id: contactId,
+      },
+    });
+
+    return {
+      success: true,
+      message: "Contact deleted successfully",
+    };
+  } catch (error) {
+    console.error("🚀 Error in backend server:", error);
+    return {
+      success: false,
+      message: "Failed to delete contact. Please contact admin.",
+    };
   }
 };
