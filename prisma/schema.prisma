@@ -8,15 +8,42 @@ generator client {
   provider = "prisma-client-js"
 }
 
-// datasource db {
-//   provider = "sqlserver"
-//   url      = env("DATABASE_URL")
-// }
-
 datasource db {
   provider  = "postgresql"
   url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
+}
+
+// datasource db {
+//   provider = "postgresql"
+//   url      = env("DATABASE_URL")
+// }
+
+enum PolicyTypeEnum {
+  TERM_LIFE
+  HEALTH
+  HOME
+  AUTO
+  TRAVEL
+  OTHER
+}
+
+enum PremiumTypeEnum {
+  MONTHLY
+  QUARTERLY
+  YEARLY
+  ONE_TIME
+}
+
+enum CoverageTypeEnum {
+  L
+  CR
+}
+
+enum PolicyStatusEnum {
+  ACTIVE
+  PENDING
+  EXPIRED
 }
 
 model User {
@@ -25,11 +52,59 @@ model User {
   name        String?
   email       String        @unique
   imageUrl    String?
+  policies    Policy[]
+  contactList ContactList[]
   createdAt   DateTime      @default(now())
   updatedAt   DateTime      @updatedAt
-  ContactList ContactList[]
 
   @@map("users")
+}
+
+model Policy {
+  id                   Int                    @id @default(autoincrement())
+  policyName           String
+  policyId             String                 @unique
+  policyType           PolicyTypeEnum
+  premium              Float
+  premiumFrequency     PremiumTypeEnum
+  coverageAmount       Float
+  coverageAmtIn        CoverageTypeEnum
+  policyStartDate      DateTime
+  policyExpireDate     DateTime
+  isRecurring          Boolean                @default(false)
+  nextDueDate          DateTime
+  policyStatus         PolicyStatusEnum
+  user                 User                   @relation(fields: [userId], references: [id])
+  userId               String
+  createdAt            DateTime               @default(now())
+  updatedAt            DateTime               @updatedAt
+  premiumSchedule      PremiumSchedule[]
+  coverageDistribution CoverageDistribution[]
+
+  @@map("policies")
+}
+
+model PremiumSchedule {
+  id          Int      @id @default(autoincrement())
+  policy      Policy   @relation(fields: [policyId], references: [id])
+  policyId    Int
+  paymentDate DateTime
+  amount      Float
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("premium_schedules")
+}
+
+model CoverageDistribution {
+  id         Int      @id @default(autoincrement())
+  policy     Policy   @relation(fields: [policyId], references: [id])
+  policyId   Int
+  percentage Float
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("coverage_distributions")
 }
 
 model ContactList {
@@ -39,10 +114,10 @@ model ContactList {
   contactPhone String   @unique
   contactEmail String   @unique
   userId       String
-  User         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
   @@index([userId])
-  @@map("contactLists")
+  @@map("contact_lists")
 }

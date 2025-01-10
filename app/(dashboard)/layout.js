@@ -4,7 +4,7 @@ import React from "react";
 
 const Mainlayout = ({ children }) => {
   return (
-    <div className="p-5 pt-20">
+    <div className="p-5 ">
       <SidebarProvider
         style={{
           "--sidebar-width": "16rem",
@@ -12,7 +12,7 @@ const Mainlayout = ({ children }) => {
         }}
       >
         <AppSidebar />
-        <div>{children}</div>
+        <div className="py-3">{children}</div>
       </SidebarProvider>
     </div>
   );

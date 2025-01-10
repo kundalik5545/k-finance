@@ -26,30 +26,19 @@ export default function RootLayout({ children }) {
           </header>
 
           {/* Main Section */}
-          <SidebarProvider
-            style={{
-              "--sidebar-width": "16rem",
-              "--sidebar-width-mobile": "10rem",
-            }}
-          >
-            <AppSidebar />
-            <div className="flex flex-col items-center w-full">
-              <main className="min-h-screen w-full" id="main-section">
-                {children}
-              </main>
-              {/* <Toaster richColors /> */}
-              {/* footer */}
-              <footer
-                className="footer w-full bg-black text-white pb-4 md:mb-0 rounded-2xl"
-                id="footer"
-              >
-                <Footer />
-              </footer>
-            </div>
-          </SidebarProvider>
+          <main className="min-h-screen w-full" id="main-section">
+            {children}
+          </main>
 
-          {/* Mobile nav at bottom */}
-          {/* <MobileNav /> */}
+          <Toaster richColors />
+
+          {/* footer */}
+          <footer
+            className="footer w-full bg-black text-white pb-4 md:mb-0 rounded-2xl"
+            id="footer"
+          >
+            <Footer />
+          </footer>
         </body>
       </html>
     </ClerkProvider>

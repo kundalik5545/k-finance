@@ -1,4 +1,7 @@
+import { Plus } from "lucide-react";
 import React from "react";
+import AddPolicyForm from "./Insurance/AddPolicy";
+import { Button } from "@/components/ui/button";
 
 const Insurance = () => {
   return (
@@ -138,25 +141,16 @@ const Insurance = () => {
         </div>
 
         {/* <!-- Insurance Policies List --> */}
+
         <div className="bg-white rounded-lg border border-neutral-200/30">
           <div className="p-4 border-b border-neutral-200/30 flex justify-between items-center">
             <h3 className="text-lg font-semibold">Active Insurance Policies</h3>
-            <button className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700 transition-colors flex items-center gap-2">
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                ></path>
-              </svg>
+            <AddPolicyForm />
+
+            {/* <button className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700 transition-colors flex items-center gap-2">
+              <Plus size={18} />
               Add Policy
-            </button>
+            </button> */}
           </div>
           <div className="overflow-x-auto">
             <table className="w-full">

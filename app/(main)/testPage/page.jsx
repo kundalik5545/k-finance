@@ -1,3 +1,5 @@
+"use client";
+import { allInsurancePolicyForChart } from "@/actions/Insurance";
 import DialogForForm from "@/components/dialogForForm";
 import DrawerForForm from "@/components/drawerForm";
 import SheetForForm from "@/components/SheetForForm";
@@ -5,9 +7,10 @@ import { Button } from "@/components/ui/button";
 import { DrawerClose, DrawerFooter } from "@/components/ui/drawer";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const TestPage = () => {
+  const [chartRes, setchartRes] = useState({});
   const drawerFormTitle = "Add Emergency Contacts";
   const drawerFormTrigger = <Button>Add Contact</Button>;
 
@@ -16,6 +19,23 @@ const TestPage = () => {
 
   const dialogFormTitle = "Add Emergency Contacts";
   const dialogFormTrigger = <Button>Add Dialog Contact</Button>;
+
+  const policySum = async () => {
+    const response = await allInsurancePolicyForChart();
+    setchartRes(response.data);
+  };
+
+  console.log("Chart res:- ", chartRes);
+
+  let chartData = [];
+  let chartLabel = [];
+  chartRes.map((d) => chartData.push(d));
+
+  console.log("Chart data array is:- ", chartData);
+
+  useEffect(() => {
+    policySum();
+  }, []);
 
   return (
     <div className="flex flex-wrap gap-3">
@@ -159,7 +179,29 @@ const TestPage = () => {
         </div>
       </DialogForForm>
 
-      {/* testing backend response */}
+      {/* testing colors */}
+      <div className="space-y-2 p-2 ">
+        <p className="text-center px-2 py-1 text-xs font-medium rounded-full bg-green-50 text-green-600 ">
+          bg-green-100
+        </p>
+        <p className="text-center px-2 py-1 text-xs font-medium rounded-full bg-blue-50 text-blue-600">
+          bg-blue-100
+        </p>
+        <p className="text-center px-2 py-1 text-xs font-medium rounded-full bg-red-50 text-red-600">
+          bg-red-100
+        </p>
+        <p className="text-center px-2 py-1 text-xs font-medium rounded-full bg-purple-50 text-purple-600">
+          bg-purple-100
+        </p>
+        <p className="text-center px-2 py-1 text-xs font-medium rounded-full bg-yellow-50 text-yellow-600">
+          bg-yellow-100
+        </p>
+        <p className="text-center px-2 py-1 text-xs font-medium rounded-full bg-gray-50  text-gray-600">
+          bg-gray-100
+        </p>
+      </div>
+
+      {/* CHart display */}
     </div>
   );
 };
