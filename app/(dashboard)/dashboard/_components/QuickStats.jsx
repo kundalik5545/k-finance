@@ -11,6 +11,13 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
+import StatCard from "@/components/commonComponents/StatCard";
+import {
+  CircleArrowDown,
+  CircleArrowUp,
+  CircleDollarSign,
+  TrendingUp,
+} from "lucide-react";
 
 const QuickStats = () => {
   const chartData = [
@@ -75,105 +82,38 @@ const QuickStats = () => {
         className="total-balance grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
         id="dashboard-total-balance"
       >
-        <div className="bg-white p-4 rounded-lg border border-neutral-200/30">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-neutral-500">Total Balance</p>
-              <h3 className="text-2xl font-bold text-neutral-800">₹2,45,678</h3>
-            </div>
-            <div className="p-2 bg-green-50 rounded-lg">
-              <svg
-                className="w-6 h-6 text-green-600"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                ></path>
-              </svg>
-            </div>
-          </div>
-          <p className="mt-2 text-sm text-green-600">+2.5% from last month</p>
-        </div>
-
-        <div className="bg-white p-4 rounded-lg border border-neutral-200/30">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-neutral-500">Monthly Income</p>
-              <h3 className="text-2xl font-bold text-neutral-800">₹85,000</h3>
-            </div>
-            <div className="p-2 bg-blue-50 rounded-lg">
-              <svg
-                className="w-6 h-6 text-blue-600"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M9 11l3-3m0 0l3 3m-3-3v8m0-13a9 9 0 110 18 9 9 0 010-18z"
-                ></path>
-              </svg>
-            </div>
-          </div>
-          <p className="mt-2 text-sm text-blue-600">Regular salary credit</p>
-        </div>
-
-        <div className="bg-white p-4 rounded-lg border border-neutral-200/30">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-neutral-500">Monthly Expense</p>
-              <h3 className="text-2xl font-bold text-neutral-800">₹45,230</h3>
-            </div>
-            <div className="p-2 bg-red-50 rounded-lg">
-              <svg
-                className="w-6 h-6 text-red-600"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M15 13l-3 3m0 0l-3-3m3 3V8m0 13a9 9 0 110-18 9 9 0 010 18z"
-                ></path>
-              </svg>
-            </div>
-          </div>
-          <p className="mt-2 text-sm text-red-600">+12% from last month</p>
-        </div>
-
-        <div className="bg-white p-4 rounded-lg border border-neutral-200/30">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-neutral-500">Investments</p>
-              <h3 className="text-2xl font-bold text-neutral-800">₹5,25,000</h3>
-            </div>
-            <div className="p-2 bg-purple-50 rounded-lg">
-              <svg
-                className="w-6 h-6 text-purple-600"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-                ></path>
-              </svg>
-            </div>
-          </div>
-          <p className="mt-2 text-sm text-purple-600">15% returns YTD</p>
-        </div>
+        <StatCard
+          iconName={<CircleDollarSign color="green" />}
+          MainAmt={" 2,45,768"}
+          statsChange={"+2.5% increase from last month."}
+          topTitle={"Total Balance"}
+          bgColor={"bg-green-50"}
+          statTextColor={"text-green-600"}
+        />
+        <StatCard
+          iconName={<CircleArrowUp color="blue" />}
+          MainAmt={" 85,768"}
+          statsChange={"Regular salary credit."}
+          topTitle={"Monthly Income"}
+          bgColor={"bg-blue-50"}
+          statTextColor={"text-blue-600"}
+        />
+        <StatCard
+          iconName={<CircleArrowDown color="red" />}
+          MainAmt={" 2,45,768"}
+          statsChange={"+2.5% increase from last month."}
+          topTitle={"Monthly Expense"}
+          bgColor={"bg-red-50"}
+          statTextColor={"text-red-600"}
+        />
+        <StatCard
+          iconName={<TrendingUp color="green" />}
+          MainAmt={" 2,45,768"}
+          statsChange={"+2.5% increase from last month."}
+          topTitle={"Investments"}
+          bgColor={"bg-purple-50"}
+          statTextColor={"text-purple-600"}
+        />
       </div>
 
       {/* Charts section */}
@@ -233,20 +173,14 @@ const QuickStats = () => {
       <div className="all-assets pt-5 pb-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
         {allItems.map((ele) => (
           <Link href={ele.href} key={ele.id} className="block">
-            <div className="bg-white p-4 rounded-lg border border-neutral-200/30">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-neutral-500">
-                    <span>Total {ele.items} Balance</span>
-                  </p>
-                  <h3 className="text-2xl font-bold text-neutral-800">
-                    ₹{ele.totalAmt}
-                  </h3>
-                </div>
-                <div className="p-2 bg-gray-50 rounded-lg">{ele.icon}</div>
-              </div>
-              <p className="mt-2 text-sm ">{ele.chng}</p>
-            </div>
+            <StatCard
+              iconName={ele.iconName}
+              MainAmt={ele.MainAmt}
+              statsChange={ele.statsChange}
+              topTitle={ele.topTitle}
+              bgColor={ele.bgColor}
+              statTextColor={ele.statTextColor}
+            />
           </Link>
         ))}
       </div>

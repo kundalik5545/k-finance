@@ -1,6 +1,23 @@
-import React from "react";
+"use client";
+import { fetchInvestments } from "@/actions/Investment";
+import useFetch from "@/hooks/use-fetch";
+import React, { useEffect } from "react";
+import AddInvestmentTrans from "../Transactions/AddInvestmentTrans";
 
 const Investmenst = () => {
+  const { apiFun, apiRes, loading, error } = useFetch(fetchInvestments);
+  useEffect(() => {
+    apiFun();
+  }, []);
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div>
       <div id="investments">
@@ -30,7 +47,9 @@ const Investmenst = () => {
                 </svg>
               </div>
             </div>
-            <p className="mt-2 text-sm text-green-600">+15.2% Returns YTD</p>
+            <a href="/investments">
+              <p className="mt-2 text-sm text-green-600">+15.2% Returns YTD </p>
+            </a>
           </div>
 
           <div className="bg-white p-4 rounded-lg border border-neutral-200/30">
@@ -147,22 +166,24 @@ const Investmenst = () => {
         <div className="bg-white rounded-lg border border-neutral-200/30">
           <div className="p-4 border-b border-neutral-200/30 flex justify-between items-center">
             <h3 className="text-lg font-semibold">Investment Details</h3>
-            <button className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700 transition-colors flex items-center gap-2">
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                ></path>
-              </svg>
-              Add Investment
-            </button>
+            <AddInvestmentTrans>
+              <button className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700 transition-colors flex items-center gap-2">
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                  ></path>
+                </svg>
+                Add Investment
+              </button>
+            </AddInvestmentTrans>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full">
@@ -189,148 +210,31 @@ const Investmenst = () => {
                 </tr>
               </thead>
               <tbody className="divide-y divide-neutral-200/30">
-                <tr>
-                  <td className="px-4 py-3">
-                    <div>
-                      <p className="text-sm font-medium text-neutral-800">
-                        HDFC Top 100 Fund
-                      </p>
-                      <p className="text-xs text-neutral-500">Large Cap Fund</p>
-                    </div>
-                  </td>
-                  <td className="px-4 py-3">
-                    <span className="px-2 py-1 text-xs font-medium bg-purple-50 text-purple-600 rounded-full">
-                      Mutual Fund
-                    </span>
-                  </td>
-                  <td className="px-4 py-3">
-                    <p className="text-sm font-medium text-neutral-800">
-                      ₹2,00,000
-                    </p>
-                    <p className="text-xs text-neutral-500">
-                      SIP: ₹10,000/month
-                    </p>
-                  </td>
-                  <td className="px-4 py-3">
-                    <p className="text-sm font-medium text-green-600">+15.8%</p>
-                    <p className="text-xs text-neutral-500">₹31,600</p>
-                  </td>
-                  <td className="px-4 py-3">
-                    <span className="px-2 py-1 text-xs font-medium bg-green-50 text-green-600 rounded-full">
-                      Active
-                    </span>
-                  </td>
-                  <td className="px-4 py-3">
-                    <div className="flex gap-2">
-                      <button className="p-1 text-blue-600 hover:bg-blue-50 rounded">
-                        <svg
-                          className="w-4 h-4"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                          ></path>
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                          ></path>
-                        </svg>
-                      </button>
-                      <button className="p-1 text-blue-600 hover:bg-blue-50 rounded">
-                        <svg
-                          className="w-4 h-4"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-                          ></path>
-                        </svg>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-3">
-                    <div>
-                      <p className="text-sm font-medium text-neutral-800">
-                        SBI FD
-                      </p>
-                      <p className="text-xs text-neutral-500">2 Year Lock-in</p>
-                    </div>
-                  </td>
-                  <td className="px-4 py-3">
-                    <span className="px-2 py-1 text-xs font-medium bg-green-50 text-green-600 rounded-full">
-                      Fixed Deposit
-                    </span>
-                  </td>
-                  <td className="px-4 py-3">
-                    <p className="text-sm font-medium text-neutral-800">
-                      ₹3,00,000
-                    </p>
-                    <p className="text-xs text-neutral-500">Matures: 2026</p>
-                  </td>
-                  <td className="px-4 py-3">
-                    <p className="text-sm font-medium text-neutral-600">7.5%</p>
-                    <p className="text-xs text-neutral-500">₹22,500/year</p>
-                  </td>
-                  <td className="px-4 py-3">
-                    <span className="px-2 py-1 text-xs font-medium bg-yellow-50 text-yellow-600 rounded-full">
-                      Locked
-                    </span>
-                  </td>
-                  <td className="px-4 py-3">
-                    <div className="flex gap-2">
-                      <button className="p-1 text-blue-600 hover:bg-blue-50 rounded">
-                        <svg
-                          className="w-4 h-4"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                          ></path>
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                          ></path>
-                        </svg>
-                      </button>
-                      <button className="p-1 text-blue-600 hover:bg-blue-50 rounded">
-                        <svg
-                          className="w-4 h-4"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-                          ></path>
-                        </svg>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
+                {!loading &&
+                  apiRes?.data?.map((investment) => (
+                    <tr key={investment.id}>
+                      <td className="px-4 py-3 text-sm text-neutral-800">
+                        {investment.description}
+                      </td>
+                      <td className="px-4 py-3 text-sm text-neutral-800">
+                        {investment.category}
+                      </td>
+                      <td className="px-4 py-3 text-sm text-neutral-800">
+                        ₹{investment.amount}
+                      </td>
+                      <td className="px-4 py-3 text-sm text-neutral-800">
+                        {investment.returns}%
+                      </td>
+                      <td className="px-4 py-3 text-sm text-neutral-800">
+                        {investment.status}
+                      </td>
+                      <td className="px-4 py-3 text-sm text-neutral-800">
+                        <button className="text-blue-600 hover:underline">
+                          View
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </div>

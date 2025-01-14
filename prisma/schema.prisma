@@ -46,6 +46,41 @@ enum PolicyStatusEnum {
   EXPIRED
 }
 
+enum TransactionTypeEnum {
+  Income
+  Expense
+  Transfer
+  Investment
+}
+
+enum TransactionStatusEnum {
+  Pending
+  Completed
+}
+
+enum ExpenseRecurringIntervalEnum {
+  Day
+  Week
+  Month
+  Year
+}
+
+model Transaction {
+  id          Int                   @id @default(autoincrement())
+  type        TransactionTypeEnum
+  category    String
+  description String
+  amount      Float
+  status      TransactionStatusEnum
+  user        User                  @relation(fields: [userId], references: [id])
+  userId      String
+  date        DateTime
+  createdAt   DateTime              @default(now())
+  updatedAt   DateTime              @updatedAt
+
+  @@map("transactions")
+}
+
 model User {
   id          String        @id @default(uuid())
   clerkUserId String        @unique
@@ -56,6 +91,8 @@ model User {
   contactList ContactList[]
   createdAt   DateTime      @default(now())
   updatedAt   DateTime      @updatedAt
+  Transaction Transaction[]
+  Expense     Expense[]
 
   @@map("users")
 }
@@ -120,4 +157,24 @@ model ContactList {
 
   @@index([userId])
   @@map("contact_lists")
+}
+
+model Expense {
+  id                 Int                           @id @default(autoincrement())
+  user               User                          @relation(fields: [userId], references: [id])
+  type               String
+  category           String
+  description        String
+  amount             Float
+  status             TransactionStatusEnum
+  userId             String
+  date               DateTime
+  isRecurring        Boolean                       @default(false)
+  recurringStartDate DateTime?
+  recurringEndDate   DateTime?
+  recurringInterval  ExpenseRecurringIntervalEnum?
+  createdAt          DateTime                      @default(now())
+  updatedAt          DateTime                      @updatedAt
+
+  @@map("expenses")
 }

@@ -1,8 +1,8 @@
-import { AppSidebar } from "@/components/AppSidebar";
+import { ServicesSidebar } from "@/components/sidebars/ServicesSidebar";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import React from "react";
 
-const Mainlayout = ({ children }) => {
+const ServicesLayout = ({ children }) => {
   return (
     <div className="p-5 pt-20">
       <SidebarProvider
@@ -11,11 +11,11 @@ const Mainlayout = ({ children }) => {
           "--sidebar-width-mobile": "10rem",
         }}
       >
-        <AppSidebar />
+        <ServicesSidebar />
         <div>{children}</div>
       </SidebarProvider>
     </div>
   );
 };
 
-export default Mainlayout;
+export default ServicesLayout;

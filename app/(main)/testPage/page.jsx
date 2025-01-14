@@ -4,42 +4,52 @@ import DialogForForm from "@/components/dialogForForm";
 import DrawerForForm from "@/components/drawerForm";
 import SheetForForm from "@/components/SheetForForm";
 import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import { DrawerClose, DrawerFooter } from "@/components/ui/drawer";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { cn } from "@/lib/utils";
+import { format } from "date-fns";
+import { CalendarIcon } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
 const TestPage = () => {
-  const [chartRes, setchartRes] = useState({});
-  const drawerFormTitle = "Add Emergency Contacts";
-  const drawerFormTrigger = <Button>Add Contact</Button>;
+  let date = new Date();
+  // const [chartRes, setchartRes] = useState({});
+  // const drawerFormTitle = "Add Emergency Contacts";
+  // const drawerFormTrigger = <Button>Add Contact</Button>;
 
-  const sheetFormTitle = "Add Emergency Contacts";
-  const sheetFormTrigger = <Button>Add Sheet Contact</Button>;
+  // const sheetFormTitle = "Add Emergency Contacts";
+  // const sheetFormTrigger = <Button>Add Sheet Contact</Button>;
 
-  const dialogFormTitle = "Add Emergency Contacts";
-  const dialogFormTrigger = <Button>Add Dialog Contact</Button>;
+  // const dialogFormTitle = "Add Emergency Contacts";
+  // const dialogFormTrigger = <Button>Add Dialog Contact</Button>;
 
-  const policySum = async () => {
-    const response = await allInsurancePolicyForChart();
-    setchartRes(response.data);
-  };
+  // const policySum = async () => {
+  //   const response = await allInsurancePolicyForChart();
+  //   setchartRes(response.data);
+  // };
 
-  console.log("Chart res:- ", chartRes);
+  // console.log("Chart res:- ", chartRes);
 
-  let chartData = [];
-  let chartLabel = [];
-  chartRes.map((d) => chartData.push(d));
+  // let chartData = [];
+  // let chartLabel = [];
+  // chartRes.map((d) => chartData.push(d));
 
-  console.log("Chart data array is:- ", chartData);
+  // console.log("Chart data array is:- ", chartData);
 
-  useEffect(() => {
-    policySum();
-  }, []);
+  // useEffect(() => {
+  //   policySum();
+  // }, []);
 
   return (
     <div className="flex flex-wrap gap-3">
-      <DrawerForForm
+      {/* <DrawerForForm
         drawerFormTitle={drawerFormTitle}
         drawerFormTrigger={drawerFormTrigger}
       >
@@ -85,10 +95,10 @@ const TestPage = () => {
             </div>
           </form>
         </div>
-      </DrawerForForm>
+      </DrawerForForm> */}
 
       {/* New sheet test */}
-      <SheetForForm
+      {/* <SheetForForm
         sheetFormTitle={sheetFormTitle}
         sheetFormTrigger={sheetFormTrigger}
       >
@@ -123,10 +133,10 @@ const TestPage = () => {
             </div>
           </form>
         </div>
-      </SheetForForm>
+      </SheetForForm> */}
 
       {/* Dialog for sheet */}
-      <DialogForForm
+      {/* <DialogForForm
         dialogFormTitle={dialogFormTitle}
         dialogFormTrigger={dialogFormTrigger}
       >
@@ -177,7 +187,7 @@ const TestPage = () => {
             </div>
           </form>
         </div>
-      </DialogForForm>
+      </DialogForForm> */}
 
       {/* testing colors */}
       <div className="space-y-2 p-2 ">
@@ -202,6 +212,39 @@ const TestPage = () => {
       </div>
 
       {/* CHart display */}
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button
+            variant="outline"
+            className={cn(
+              "w-[240px] pl-3 text-left font-normal",
+              !date && "text-muted-foreground"
+            )}
+          >
+            {date ? format(date, "PP") : <span>Pick a date</span>}
+            <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent
+          className=" w-auto p-0 bg-white dark:bg-gray-800 rounded-md shadow-lg   "
+          align="start"
+          sideOffset={5}
+          style={{ zIndex: 1000 }}
+        >
+          <div className="flex items-center justify-between p-2">
+            <Calendar
+              mode="single"
+              selected={date}
+              onSelect={(date) => setValue("date", date)}
+              disabled={(date) =>
+                date > new Date() || date < new Date("1900-01-01")
+              }
+              initialFocus
+              className="rounded-md border"
+            />
+          </div>
+        </PopoverContent>
+      </Popover>
     </div>
   );
 };

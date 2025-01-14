@@ -1,21 +1,21 @@
-import { ServicesSidebar } from "@/components/sidebars/ServicesSidebar";
+import { AppSidebar } from "@/components/AppSidebar";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import React from "react";
 
-const Mainlayout = ({ children }) => {
+const AssetsLayout = ({ children }) => {
   return (
-    <div className="p-5 pt-20">
+    <div className="p-5 flex">
       <SidebarProvider
         style={{
           "--sidebar-width": "16rem",
           "--sidebar-width-mobile": "10rem",
         }}
       >
-        <ServicesSidebar />
-        <div>{children}</div>
+        <AppSidebar />
+        <div className="py-3 w-full">{children}</div>
       </SidebarProvider>
     </div>
   );
 };
 
-export default Mainlayout;
+export default AssetsLayout;

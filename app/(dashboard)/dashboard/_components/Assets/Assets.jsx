@@ -1,7 +1,7 @@
 import React from "react";
 
-const Assets = () => {
-  return <div>Assets</div>;
+const AssetsPage = () => {
+  return <div>AssetsPage</div>;
 };
 
-export default Assets;
+export default AssetsPage;

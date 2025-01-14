@@ -9,7 +9,7 @@ import QuickStats from "./_components/QuickStats";
 import Insurance from "./_components/Insurance/Insurance";
 
 const DashboardPage = () => {
-  const { isSignedIn, isLoaded, user } = useUser();
+  const { isSignedIn } = useUser();
 
   if (!isSignedIn) {
     return <p>Please sign in to view your profile.</p>;

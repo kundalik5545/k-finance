@@ -13,7 +13,8 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { IndianRupee, Menu } from "lucide-react";
+import { IndianRupee, Menu, Pen } from "lucide-react";
+import { AddExpenseForm } from "@/app/(main)/expense/_componets/AddExpenseForm";
 
 const HeaderBar = async () => {
   const websiteName = process.env.NEXT_PUBLIC_WEBSITENAME;
@@ -24,7 +25,18 @@ const HeaderBar = async () => {
         <div className="logo">
           <WebsiteName />
         </div>
-        <div className="Menu-section flex items-center justify-between space-x-3">
+        <div
+          className="Menu-section flex items-center
+         justify-between space-x-3"
+        >
+          <div className="">
+            <AddExpenseForm>
+              <Button>
+                <Pen size={15} />
+                Create Expense
+              </Button>
+            </AddExpenseForm>
+          </div>
           <div className="app-search relative">
             <input
               type="text"

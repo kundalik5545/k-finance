@@ -13,6 +13,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import HeroSection from "@/components/Hero";
 import Image from "next/image";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -128,6 +129,15 @@ export default function Home() {
             </Button>
           </Link>
         </div>
+      </section>
+      <section>
+        {/* footer */}
+        <footer
+          className="footer w-full bg-black text-white pb-4 md:mb-0 rounded-2xl"
+          id="footer"
+        >
+          <Footer />
+        </footer>
       </section>
     </div>
   );

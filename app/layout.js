@@ -31,14 +31,6 @@ export default function RootLayout({ children }) {
           </main>
 
           <Toaster richColors />
-
-          {/* footer */}
-          <footer
-            className="footer w-full bg-black text-white pb-4 md:mb-0 rounded-2xl"
-            id="footer"
-          >
-            <Footer />
-          </footer>
         </body>
       </html>
     </ClerkProvider>

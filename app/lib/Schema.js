@@ -46,3 +46,110 @@ export const addOnePolicySchema = z.object({
   policyName: z.string().nonempty("Policy name is required"),
   coverageAmtIn: z.enum(["CR", "L"]),
 });
+
+export const addTransactionSchema = z.object({
+  type: z.enum(["Income", "Expense", "Transfer", "Investment"], {
+    errorMap: () => ({ message: "Type is required." }),
+  }),
+  category: z.string().min(1, { message: "Category is required." }),
+  amount: z.preprocess(
+    (val) => parseFloat(val),
+    z.number().min(1, "Premium must be greater than 0")
+  ),
+  date: z.date({ required_error: "Please select a valid transaction date." }),
+  status: z.enum(["Completed", "Pending"], {
+    errorMap: () => ({ message: "Please select a valid transaction status." }),
+  }),
+  description: z.union([
+    z
+      .string()
+      .max(200, { message: "Description should not exceed 200 characters." }),
+    z.string().optional(),
+  ]),
+});
+
+// export const addTransactionSchema = z.object({
+//   type: z.string().nonempty("Type is required"),
+//   category: z.string().nonempty("Category is required"),
+//   amount: z.number().min(0, "Amount must be a positive number"),
+//   date: z
+//     .date()
+//     .nullable()
+//     .refine((val) => val !== null, "Date is required"),
+//   status: z.string().nonempty("Status is required"),
+//   descriptions: z.string().optional(),
+// });
+
+export const addExpenseSchema = z.object({
+  category: z.string().nonempty("Category is required"),
+  type: z.string().nonempty("Type is required"),
+  amount: z.number().min(0.01, "Amount must be a positive number"),
+  date: z
+    .date()
+    .nullable()
+    .refine((val) => val !== null, "Date is required"),
+  status: z.enum(["Completed", "Pending"]),
+  description: z.string().optional(),
+  isRecurring: z.boolean().optional(),
+  recurringStartDate: z.date().optional(),
+  recurringEndDate: z.date().optional(),
+  recurringInterval: z.enum(["Day", "Week", "Month", "Year"]).optional(),
+});
+export const addEFormSchemas = z.object({
+  category: z.string().nonempty("Category is required"),
+  type: z.string().nonempty("Type is required"),
+  amount: z.number().min(0.01, "Amount must be a positive number"),
+  date: z
+    .date()
+    .nullable()
+    .refine((val) => val !== null, "Date is required"),
+  status: z.enum(["Completed", "Pending"]),
+  description: z.string().optional(),
+  isRecurring: z.boolean().optional(),
+  recurringStartDate: z.date().optional(),
+  recurringEndDate: z.date().optional(),
+  recurringInterval: z.enum(["Day", "Week", "Month", "Year"]).optional(),
+});
+
+export const addEFormSchema = z
+  .object({
+    category: z.string().nonempty("Category is required"),
+    type: z.string().nonempty("Type is required"),
+    amount: z.number().min(0.01, "Amount must be greater than 0"),
+    date: z.date().optional(),
+    status: z.string().nonempty("Status is required"),
+    description: z.string().optional(),
+    isRecurring: z.boolean().default(false),
+    recurringStartDate: z.date().optional(),
+    recurringEndDate: z.date().optional(),
+    recurringInterval: z
+      .enum(["Day", "Week", "Month", "Year"])
+      .optional()
+      .nullable(),
+  })
+  .superRefine((data, ctx) => {
+    // Only validate recurring fields if isRecurring is true
+    if (data.isRecurring) {
+      if (!data.recurringStartDate) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "Recurring start date is required",
+          path: ["recurringStartDate"],
+        });
+      }
+      if (!data.recurringEndDate) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "Recurring end date is required",
+          path: ["recurringEndDate"],
+        });
+      }
+      if (!data.recurringInterval) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "Recurring interval is required",
+          path: ["recurringInterval"],
+        });
+      }
+    }
+  });

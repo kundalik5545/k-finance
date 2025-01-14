@@ -32,7 +32,6 @@ export default function AddPolicyForm() {
   const dialogFormTrigger = <Button type="button">Add Policy</Button>;
 
   const onSubmit = (data) => {
-    console.log("Form Data Submitted:", data);
     reset(); // Reset the form after submission
   };
 

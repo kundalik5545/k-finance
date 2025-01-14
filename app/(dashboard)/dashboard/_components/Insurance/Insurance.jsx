@@ -16,7 +16,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import { Calendar } from "@/components/ui/calendar";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import { Controller, useForm } from "react-hook-form";
@@ -95,7 +94,6 @@ const Insurance = () => {
 
   const policySum = async () => {
     const response = await allInsurancePolicyForChart();
-    console.log("Chart response:-", response);
     setchartRes(response.data);
   };
 
@@ -112,13 +110,12 @@ const Insurance = () => {
 
   const onSubmit = async (data) => {
     try {
-      console.log("Running on submit :- ", data);
-
       const response = await createPolicyFn(data);
-
-      console.log("Frontend response :- ", response);
+      if (response.success) {
+        setOpen(false);
+      }
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
   };
 
@@ -150,6 +147,7 @@ const Insurance = () => {
     "Status",
     "Actions",
   ];
+
   return (
     <div id="insurance">
       {/* <!-- Insurance Summary Cards --> */}
@@ -577,7 +575,9 @@ const Insurance = () => {
                   {/* Policy Button */}
                   <div className="space-x-3 pt-4">
                     <Button type="submit">Submit</Button>
-                    <Button type="button">Cancel</Button>
+                    <Button type="button" onClick={handleReset}>
+                      Cancel
+                    </Button>
                   </div>
                 </form>
               </DialogHeader>
